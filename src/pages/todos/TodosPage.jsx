@@ -1,28 +1,31 @@
 import { useMemo } from 'react'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { fetchTodos, fetchUsers } from '../../lib/api.js'
-import { useLocalStorageState } from '../../hooks/useLocalStorageState.js'
 import { Button } from '../../ui/Button.jsx'
 import styles from './TodosPage.module.css'
 
 const PAGE_SIZE = 10
-const FILTER_STORAGE_KEY = 'todo-list-filters'
 const defaultFilters = {
   search: '',
   userId: 'all',
   status: 'all',
   page: 1,
 }
+const FILTERS_QUERY_KEY = ['todo-filters']
 
 function getStatusLabel(completed) {
   return completed ? 'Completed' : 'Pending'
 }
 
 export function TodosPage() {
-  const [filters, setFilters] = useLocalStorageState(
-    FILTER_STORAGE_KEY,
-    defaultFilters,
-  )
+  const queryClient = useQueryClient()
+  const { data: filters = defaultFilters } = useQuery({
+    queryKey: FILTERS_QUERY_KEY,
+    queryFn: () => defaultFilters,
+    initialData: defaultFilters,
+    staleTime: Number.POSITIVE_INFINITY,
+    gcTime: Number.POSITIVE_INFINITY,
+  })
 
   const todosQuery = useQuery({
     queryKey: ['todos'],
@@ -68,7 +71,7 @@ export function TodosPage() {
   )
 
   function updateFilters(patch) {
-    setFilters((current) => {
+    queryClient.setQueryData(FILTERS_QUERY_KEY, (current = defaultFilters) => {
       const next = { ...current, ...patch }
 
       if (
@@ -114,7 +117,10 @@ export function TodosPage() {
           </p>
         </div>
 
-        <Button variant="primary" onClick={() => setFilters(defaultFilters)}>
+        <Button
+          variant="primary"
+          onClick={() => queryClient.setQueryData(FILTERS_QUERY_KEY, defaultFilters)}
+        >
           Reset Filters
         </Button>
       </div>

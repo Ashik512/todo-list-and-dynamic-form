@@ -6,4 +6,5 @@ export const FIELD_TYPES = [
   { value: 'select', label: 'Select' },
   { value: 'radio', label: 'Radio Buttons' },
   { value: 'date', label: 'Date' },
+  { value: 'checkbox', label: 'Checkbox' },
 ]

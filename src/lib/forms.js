@@ -2,7 +2,7 @@ import { readLocalStorage, writeLocalStorage } from './localStorage.js'
 
 export const FORMS_STORAGE_KEY = 'dynamic-form-forms'
 
-const FIELD_TYPES_WITH_OPTIONS = new Set(['select', 'radio'])
+const FIELD_TYPES_WITH_OPTIONS = new Set(['select', 'radio', 'checkbox'])
 
 function parseOptions(value) {
   return value

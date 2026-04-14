@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import { normalizeForm, readForms, writeForms } from '../../lib/forms.js'
 import { useFormDraftEditor } from '../../hooks/useFormDraftEditor.js'
+import { normalizeForm, readForms, writeForms } from '../../lib/forms.js'
 import { Button } from '../../ui/Button.jsx'
 import { CommonModal } from '../../ui/CommonModal.jsx'
 import { FormEditor } from '../../ui/FormEditor.jsx'
@@ -181,6 +181,34 @@ export function FormPreviewPage() {
                       <span>{option}</span>
                     </label>
                   ))}
+                </div>
+              ) : field.type === 'checkbox' ? (
+                <div className={styles.checkboxOptionGroup}>
+                  {field.options.map((option) => {
+                    const currentValues = (selectedValues[field.name] || '')
+                      .split(',')
+                      .map((v) => v.trim())
+                      .filter(Boolean)
+                    const isChecked = currentValues.includes(option)
+
+                    return (
+                      <label key={option} className={styles.checkboxOption}>
+                        <input
+                          type="checkbox"
+                          name={field.name}
+                          value={option}
+                          checked={isChecked}
+                          onChange={() => {
+                            const next = isChecked
+                              ? currentValues.filter((v) => v !== option)
+                              : [...currentValues, option]
+                            updateValue(field.name, next.join(', '))
+                          }}
+                        />
+                        <span>{option}</span>
+                      </label>
+                    )
+                  })}
                 </div>
               ) : (
                 <input

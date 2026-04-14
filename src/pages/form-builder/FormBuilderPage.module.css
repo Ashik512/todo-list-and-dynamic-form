@@ -1,0 +1,259 @@
+.page {
+  display: grid;
+  gap: 22px;
+}
+
+.profileCard,
+.savedFormsCard,
+.formCard,
+.fieldCard,
+.modal {
+  border: 1px solid rgba(223, 227, 235, 0.95);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.profileCard,
+.savedFormsCard {
+  padding: 28px 28px 30px;
+}
+
+.profileHero,
+.savedFormsHeader,
+.savedFormItem,
+.modalHeader,
+.formCardHeader,
+.fieldCardHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: flex-start;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 18px;
+  align-items: center;
+}
+
+.kicker,
+.fieldOrder {
+  margin: 0 0 8px;
+  color: #ef233c;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.profileName,
+.savedFormsHeading,
+.modalTitle,
+.formCardTitle,
+.fieldTitle,
+.savedFormTitle {
+  margin: 0;
+  line-height: 1.1;
+}
+
+.profileHero {
+  align-items: center;
+}
+
+.profileIdentity {
+  display: grid;
+  gap: 8px;
+}
+
+.profileName {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+
+.profileNote {
+  margin: 10px 0 0;
+  color: #7b8794;
+  max-width: 48ch;
+}
+
+.subheading,
+.savedFormMeta,
+.emptyState p {
+  margin: 10px 0 0;
+  color: #6b7280;
+  max-width: 62ch;
+}
+
+.formCount {
+  padding: 10px 14px;
+  border-radius: 999px;
+  color: #0f172a;
+  font-weight: 700;
+  background: #f4f6f8;
+}
+
+.savedFormsCard {
+  display: grid;
+  gap: 18px;
+}
+
+.savedFormsList,
+.fieldStack {
+  display: grid;
+  gap: 18px;
+}
+
+.savedFormItem {
+  padding: 20px;
+  border: 1px solid #e7ebf0;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #ffffff, #fbfcfd);
+}
+
+.savedFormBody {
+  display: grid;
+  gap: 6px;
+}
+
+.savedFormActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.emptyState {
+  padding: 28px;
+  border: 1px dashed #d6dce5;
+  border-radius: 22px;
+  background: linear-gradient(180deg, #fcfcfd, #f5f7fa);
+}
+
+.emptyState h4 {
+  margin: 0;
+}
+
+.modalHeader,
+.modalFooter {
+  padding: 24px 28px;
+  background: rgba(249, 250, 251, 0.96);
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.modalBody {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 0 28px 28px;
+}
+
+.formCard {
+  padding: 24px;
+  margin-top: 4px;
+  display: grid;
+  gap: 20px;
+}
+
+.fieldCard {
+  padding: 20px;
+}
+
+.inputGroup,
+.checkboxGroup {
+  display: grid;
+  gap: 8px;
+}
+
+.inputGroup span,
+.checkboxGroup span {
+  color: #334155;
+  font-weight: 700;
+}
+
+.inputGroup input,
+.inputGroup select,
+.inputGroup textarea {
+  width: 100%;
+  padding: 13px 14px;
+  border: 1px solid #d6dce5;
+  background: #fff;
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.checkboxGroup {
+  align-content: center;
+}
+
+.checkboxGroup input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+}
+
+@media (max-width: 960px) {
+  .profileHero,
+  .savedFormsHeader,
+  .savedFormItem,
+  .modalHeader,
+  .formCardHeader,
+  .fieldCardHeader,
+  .modalFooter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fieldGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .savedFormActions > * {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .modalHeader,
+  .modalFooter,
+  .modalBody {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .profileCard,
+  .savedFormsCard {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .profileIdentity {
+    gap: 6px;
+  }
+
+  .savedFormItem {
+    border-radius: 16px;
+  }
+
+  .formCount {
+    width: fit-content;
+  }
+}
+
+@media (max-width: 520px) {
+  .profileName {
+    font-size: 1.45rem;
+  }
+
+  .savedFormsHeading {
+    font-size: 1.25rem;
+  }
+}

@@ -1,0 +1,189 @@
+.page {
+  display: grid;
+  gap: 20px;
+}
+
+.toolbar,
+.filters,
+.list,
+.pagination,
+.stateCard,
+.meta {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #dbe4ee;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+}
+
+.toolbar,
+.meta,
+.pagination,
+.stateCard {
+  padding: 20px 24px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.heading {
+  margin: 0 0 6px;
+  font-size: 1.7rem;
+}
+
+.subheading {
+  margin: 0;
+  color: #475569;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  color: #334155;
+  font-weight: 600;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #cbd5e1;
+  background: #fff;
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #475569;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.todoCard {
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+}
+
+.todoTopRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.todoId {
+  color: #64748b;
+  font-weight: 700;
+}
+
+.statusDone,
+.statusPending {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.statusDone {
+  color: #166534;
+  background: #dcfce7;
+}
+
+.statusPending {
+  color: #9a3412;
+  background: #ffedd5;
+}
+
+.todoTitle {
+  margin: 0 0 10px;
+  text-transform: capitalize;
+}
+
+.todoUser {
+  margin: 0;
+  color: #475569;
+}
+
+.emptyState,
+.stateCard {
+  color: #475569;
+}
+
+.stateCard {
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+@media (max-width: 800px) {
+  .toolbar,
+  .meta,
+  .pagination {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filters {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar,
+  .filters,
+  .list,
+  .pagination,
+  .meta,
+  .stateCard {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .meta {
+    gap: 8px;
+  }
+
+  .pagination > * {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .heading {
+    font-size: 1.35rem;
+  }
+
+  .list {
+    grid-template-columns: 1fr;
+  }
+
+  .todoCard {
+    padding: 14px;
+    border-radius: 16px;
+  }
+}
